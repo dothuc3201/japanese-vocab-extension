@@ -3,6 +3,10 @@ package com.thucdozz.japaneseVocabExtension.services;
 import com.thucdozz.japaneseVocabExtension.dto.UserCreationRequest;
 import com.thucdozz.japaneseVocabExtension.entities.User;
 import com.thucdozz.japaneseVocabExtension.repositories.IUserRepository;
+
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +23,15 @@ public class UserService {
         user.setEmail(request.getEmail());
         user.setCreated_at(request.getCreated_at());
         return userRepository.save(user);
+    }
+
+    // lấy tất cả user
+    public List<User> getUsers() {
+        return userRepository.findAll();
+    }
+
+    // lấy user theo id
+    public User getUserById(UUID userId) {
+        return userRepository.findById(userId).orElse(null);
     }
 }
