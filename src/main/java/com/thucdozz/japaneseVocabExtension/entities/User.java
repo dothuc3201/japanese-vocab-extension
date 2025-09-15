@@ -4,24 +4,27 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String user_id;
+    private UUID user_id;
     private String username;
     private String password_hash; // Changed to password_hash for clarity
     private String email;
     private LocalDate created_at;
 
-    public String getUser_id() {
+    public UUID getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(String user_id) {
+    public void setUser_id(UUID user_id) {
         this.user_id = user_id;
     }
 

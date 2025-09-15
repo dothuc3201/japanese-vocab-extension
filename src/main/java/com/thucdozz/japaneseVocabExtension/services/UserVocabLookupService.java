@@ -12,6 +12,9 @@ public class UserVocabLookupService {
 
     public UserVocabLookup searchVocab(String vocab){
         // Implement search logic here
-        return null; // Placeholder return
+        var result = new UserVocabLookup();
+        result.setSearched_word(vocab);
+        userVocabLookupRepository.save(result);
+        return result;
     }
 }
