@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import org.hibernate.annotations.UuidGenerator;
 
 @Entity
 public class UserVocabLookup {

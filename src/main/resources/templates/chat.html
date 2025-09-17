@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ChatGPT Style Chat</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f7f7f8; margin: 0; }
+        .chat-container { max-width: 600px; margin: 40px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #ccc; padding: 24px; }
+        .messages { min-height: 300px; margin-bottom: 20px; }
+        .message { margin: 10px 0; padding: 10px 16px; border-radius: 16px; max-width: 80%; }
+        .user { background: #e6f7ff; align-self: flex-end; }
+        .bot { background: #f0f0f0; align-self: flex-start; }
+        .input-area { display: flex; }
+        .input-area input { flex: 1; padding: 10px; border-radius: 16px; border: 1px solid #ccc; }
+        .input-area button { margin-left: 8px; padding: 10px 20px; border-radius: 16px; border: none; background: #10a37f; color: #fff; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="messages" id="messages"></div>
+        <form class="input-area" onsubmit="sendMessage(event)">
+            <input type="text" id="input" placeholder="Type your message..." autocomplete="off" required />
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script>
+        const messagesDiv = document.getElementById('messages');
+        function addMessage(text, sender) {
+            const msg = document.createElement('div');
+            msg.className = 'message ' + sender;
+            msg.textContent = text;
+            messagesDiv.appendChild(msg);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+        function sendMessage(e) {
+            e.preventDefault();
+            const input = document.getElementById('input');
+            const text = input.value;
+            addMessage(text, 'user');
+            input.value = '';
+            // Fake bot response
+            setTimeout(() => {
+                addMessage('Bot: ' + text, 'bot');
+            }, 500);
+        }
+    </script>
+</body>
+</html>
