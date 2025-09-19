@@ -18,6 +18,12 @@ public class UserService {
     // Add methods to interact with the userRepository as needed
     public User createUser (UserCreationRequest request){
         User user = new User();
+
+        //validate
+        if(userRepository.existsByUsername(request.getUsername())){
+            throw new IllegalArgumentException("Username already exists");
+        }
+
         user.setUsername(request.getUsername());
         user.setPassword_hash(request.getPassword_hash());
         user.setEmail(request.getEmail());

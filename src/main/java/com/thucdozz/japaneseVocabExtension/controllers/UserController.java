@@ -4,6 +4,8 @@ import com.thucdozz.japaneseVocabExtension.dto.UserCreationRequest;
 import com.thucdozz.japaneseVocabExtension.entities.User;
 import com.thucdozz.japaneseVocabExtension.services.UserService;
 
+import jakarta.validation.Valid;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -23,7 +25,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public User createUser(@RequestBody UserCreationRequest request) {
+    public User createUser(@RequestBody @Valid UserCreationRequest request) {
         // Implementation for creating a user
         return userService.createUser(request); // Placeholder return
     }
