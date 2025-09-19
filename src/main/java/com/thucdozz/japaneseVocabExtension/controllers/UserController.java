@@ -1,5 +1,6 @@
 package com.thucdozz.japaneseVocabExtension.controllers;
 
+import com.thucdozz.japaneseVocabExtension.dto.ApiResponse;
 import com.thucdozz.japaneseVocabExtension.dto.UserCreationRequest;
 import com.thucdozz.japaneseVocabExtension.entities.User;
 import com.thucdozz.japaneseVocabExtension.services.UserService;
@@ -25,19 +26,21 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public User createUser(@RequestBody @Valid UserCreationRequest request) {
-        // Implementation for creating a user
-        return userService.createUser(request); // Placeholder return
+    public ApiResponse<User> createUser(@RequestBody @Valid UserCreationRequest request) {
+        ApiResponse<User> response = new ApiResponse<>(userService.createUser(request));
+        return response;
     }
 
     // lấy tất cả user
     @GetMapping
-    public List<User> getUsers() {
-        return userService.getUsers();
+    public ApiResponse<List<User>> getUsers() {
+        ApiResponse<List<User>> response = new ApiResponse<>(userService.getUsers());
+        return response;
     }
 
     @GetMapping("/{userId}")
-    public User getUserById(@PathVariable("userId") UUID userId) {
-        return userService.getUserById(userId);
+    public ApiResponse<User> getUserById(@PathVariable("userId") UUID userId) {
+        ApiResponse<User> response = new ApiResponse<>(userService.getUserById(userId));
+        return response;
     }
 }
