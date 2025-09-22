@@ -15,7 +15,7 @@ public class UserVocabLookup {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID lookup_id;
     private UUID user_id;
-    private String searched_word;
+    private String word;
     private String reading;
     private String meaning;
     private String jlpt_level;
@@ -33,11 +33,11 @@ public class UserVocabLookup {
     public void setUser_id(UUID user_id) {
         this.user_id = user_id;
     }
-    public String getSearched_word() {
-        return searched_word;
+    public String getWord() {
+        return word;
     }
-    public void setSearched_word(String searched_word) {
-        this.searched_word = searched_word;
+    public void setWord(String word) {
+        this.word = word;
     }
     public String getReading() {
         return reading;

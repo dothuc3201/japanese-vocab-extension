@@ -13,8 +13,13 @@ public class UserVocabLookupService {
     public UserVocabLookup searchVocab(String vocab){
         // Implement search logic here
         var result = new UserVocabLookup();
-        result.setSearched_word(vocab);
+        result.setWord(vocab);
         userVocabLookupRepository.save(result);
         return result;
+    }
+
+    // lưu từ vựng đã tra cứu vào database
+    public UserVocabLookup save(UserVocabLookup vocabLookup) {
+        return userVocabLookupRepository.save(vocabLookup);
     }
 }
