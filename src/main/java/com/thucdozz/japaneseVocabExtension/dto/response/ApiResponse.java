@@ -1,6 +1,7 @@
-package com.thucdozz.japaneseVocabExtension.dto;
+package com.thucdozz.japaneseVocabExtension.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.thucdozz.japaneseVocabExtension.dto.ErrorDetails;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResponse<T> {

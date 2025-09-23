@@ -3,6 +3,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -30,20 +33,23 @@ public class TranslateService {
     // Gọi API LibreTranslate để dịch văn bản sang tiếng việt
     public String callLibreTranslate(String keyword, String sourceLang) {
         // Tạo payload cho yêu cầu dịch
-        var payload = new HashMap<String, String>();
-        payload.put("q", keyword);
-        payload.put("source", sourceLang);
-        payload.put("target", "vn");
-        payload.put("format", "text");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        Map<String, Object> body = new HashMap<>();
+        body.put("q", keyword);
+        body.put("source", sourceLang);
+        body.put("target", "vi");
+        body.put("format", "text");
 
         // Gửi yêu cầu POST đến LibreTranslate
-        @SuppressWarnings("unchecked")
-        Map<String, Object> response = restTemplate.postForObject(LIBRE_URL, payload, Map.class);
+        HttpEntity<Map<String, Object>> entity = new HttpEntity<>(body, headers);
+        var response = restTemplate.postForObject(LIBRE_URL, entity, Map.class);
         if(response == null || !response.containsKey("translatedText")) {
             throw new RuntimeException("Dịch thất bại, không nhận được phản hồi hợp lệ từ dịch vụ.");
         }
         return response.get("translatedText").toString();
     }   
+
 
     // Gọi API Jisho để tìm kiếm từ vựng và lấy thông tin
     public Map<String, String> searchJisho(String keyword) {
@@ -59,7 +65,7 @@ public class TranslateService {
             List<?> dataList = (List<?>) dataObj;
             if (!dataList.isEmpty()) {
                 var result = dataList.get(0);
-                if (!(result instanceof Map)) {
+                if (result instanceof Map) {
                     @SuppressWarnings("unchecked")
                     Map<String, Object> item = (Map<String, Object>) result;
                     var japaneseList = (List<?>) item.get("japanese");

@@ -1,6 +1,6 @@
 package com.thucdozz.japaneseVocabExtension.services;
 
-import com.thucdozz.japaneseVocabExtension.dto.UserCreationRequest;
+import com.thucdozz.japaneseVocabExtension.dto.request.UserCreationRequest;
 import com.thucdozz.japaneseVocabExtension.entities.User;
 import com.thucdozz.japaneseVocabExtension.repositories.IUserRepository;
 

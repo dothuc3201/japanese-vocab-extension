@@ -1,4 +1,4 @@
-package com.thucdozz.japaneseVocabExtension.dto;
+package com.thucdozz.japaneseVocabExtension.dto.request;
 
 import java.time.LocalDate;
 

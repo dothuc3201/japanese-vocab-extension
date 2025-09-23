@@ -1,4 +1,4 @@
-package com.thucdozz.japaneseVocabExtension.dto;
+package com.thucdozz.japaneseVocabExtension.dto.response;
 
 public class VocabLookupResponse {
     private String word;

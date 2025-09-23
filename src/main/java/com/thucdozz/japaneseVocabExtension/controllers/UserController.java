@@ -1,7 +1,7 @@
 package com.thucdozz.japaneseVocabExtension.controllers;
 
-import com.thucdozz.japaneseVocabExtension.dto.ApiResponse;
-import com.thucdozz.japaneseVocabExtension.dto.UserCreationRequest;
+import com.thucdozz.japaneseVocabExtension.dto.request.UserCreationRequest;
+import com.thucdozz.japaneseVocabExtension.dto.response.ApiResponse;
 import com.thucdozz.japaneseVocabExtension.entities.User;
 import com.thucdozz.japaneseVocabExtension.services.UserService;
 
