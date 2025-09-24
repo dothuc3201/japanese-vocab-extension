@@ -1,28 +1,13 @@
 package com.thucdozz.japaneseVocabExtension.dto.request;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class VocabLookupRequest {
     private String keyword;
     private String sourceLang;
-
-    public VocabLookupRequest(String keyword, String sourceLang) {
-        this.keyword = keyword;
-        this.sourceLang = sourceLang;
-    }
-
-    public String getKeyword() {
-        return keyword;
-    }
-
-    public void setKeyword(String keyword) {
-        this.keyword = keyword;
-    }
-
-    public String getSourceLang() {
-        return sourceLang;
-    }
-
-    public void setSourceLang(String sourceLang) {
-        this.sourceLang = sourceLang;
-    }
-
 }

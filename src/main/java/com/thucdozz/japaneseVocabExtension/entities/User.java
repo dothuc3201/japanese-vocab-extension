@@ -5,12 +5,19 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
 @Table(name = "users")
+
+@Data // Tự động sinh getter, setter, toString, equals, hashCode
+@NoArgsConstructor // Tự động sinh constructor không tham số
+@AllArgsConstructor // Tự động sinh constructor đầy đủ tham số
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -19,44 +26,4 @@ public class User {
     private String password_hash; // Changed to password_hash for clarity
     private String email;
     private LocalDate created_at;
-
-    public UUID getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(UUID user_id) {
-        this.user_id = user_id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword_hash() {
-        return password_hash;
-    }
-
-    public void setPassword_hash(String password_hash) {
-        this.password_hash = password_hash;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public LocalDate getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(LocalDate created_at) {
-        this.created_at = created_at;
-    }
 }
